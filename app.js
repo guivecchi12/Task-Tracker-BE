@@ -7,6 +7,7 @@ const KnexSessionStore = require("connect-session-knex")(session)
 const db = require('./data/configs')
 require('dotenv').config()
 
+const landingRouter = require('./API/landingPage/landingPage-router')
 const usersRouter = require('./API/users/users-routers')
 const departmentRouter = require('./API/departments/departments-routers')
 const projectRouter = require('./API/projects/projects-router')
@@ -20,7 +21,7 @@ app.use(cors())
 app.use(express.json())
 app.use(cookieParser())  
 
-
+app.use('/', landingRouter)
 app.use('/users/', usersRouter)
 app.use('/department/', departmentRouter)
 app.use('/project/', projectRouter)
