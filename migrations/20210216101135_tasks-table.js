@@ -8,7 +8,8 @@ exports.up = function(knex) {
         
         tbl.integer('proj_id')
             .unsigned()
-            .references('project.id')
+            .references('id')
+            .inTable('project')
             .onUpdate('CASCADE')
             .onDelete('CASCADE')
   })
