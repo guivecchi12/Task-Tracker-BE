@@ -2,7 +2,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable('department', tbl => {
         tbl.increments('id')
-        tbl.string('name', 80)
+        tbl.string('name')
             .notNullable()
             .unique()
         tbl.text('image')

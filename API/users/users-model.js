@@ -3,7 +3,7 @@ const table = 'user'
 // Read all
 function listUsers(){
     return db(table)
-        .select('*')
+        .select(`${table}.id`,`${table}.name`, `${table}.email`, `${table}.image`, `${table}.dep_id`)
 }
 
 // Find by ID
