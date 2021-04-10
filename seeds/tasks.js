@@ -1,7 +1,6 @@
 const tasks = [
   {name: 'users table', description: 'needs to contain: id, name, email, picture and department they belong to', proj_id: 1},
   {name: 'department table', description: 'needs to contain: id, name, image', proj_id: 1},
-  {name: 'Test tables', description: 'verify that all tables are created and linked approprietly', proj_id: 2}
 ]
 exports.seed = function(knex) {
   // Deletes ALL existing entries
