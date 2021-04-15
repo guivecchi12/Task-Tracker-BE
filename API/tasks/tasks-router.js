@@ -6,21 +6,7 @@ const projectModel = require('../projects/projects-model')
 router.get('/', async(req, res) => {
     try{
         const tasks = await taskModel.listTasks()
-        const projects = await projectModel.listProjects()
-        const projTasks = []
-
-        for(i = 0; i < projects.length; i++){
-            for(j = 0; j < tasks.length; j++){
-                if(tasks[j].proj_id == projects[i].id){
-                    projTasks.push({
-                        project: projects[i].name,
-                        taskName: tasks[j].name,
-                        taskDescription: tasks[j].description
-                    })
-                }
-            }
-        }
-        return res.status(200).json(projTasks)
+        return res.status(200).json(tasks)
     }
     catch(err){
         return res.status(500).json({ message: err.message })
