@@ -8,7 +8,7 @@ function listProjects(){
 // List all tasks under project
 function listAllTasksAndProject(){
     return db(table)
-        .innerJoin('task as t', `${table}.id`, 't.proj_id')
+        .leftJoin('task as t', `${table}.id`, 't.proj_id')
         .select(`${table}.name as project`, 't.*')
 }
 // List by Department
