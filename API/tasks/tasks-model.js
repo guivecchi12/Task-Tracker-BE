@@ -14,10 +14,12 @@ function findByProject(projectName){
         .where('p.name', projectName)
         .select('p.name as project', `${table}.*`)
 }
-function findAllProjects(){
+
+// List by Project ID
+function findAllTasksByProject(){
     return db(table)
-        .join('project as p', `${table}.proj_id`, 'p.id')
-        .select(`*`)
+        .innerJoin('project as p', `${table}.proj_id`, 'p.id')
+        .select('p.name as project', `${table}.*`)
 }
 
 // List by ID
@@ -53,7 +55,7 @@ function remove(id){
 module.exports = {
     listTasks,
     findByProject,
-    findAllProjects,
+    findAllTasksByProject,
     findById,
     create,
     update,

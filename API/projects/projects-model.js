@@ -5,7 +5,12 @@ function listProjects(){
     return db(table)
         .select('*')
 }
-
+// List all tasks under project
+function listAllTasksAndProject(){
+    return db(table)
+        .innerJoin('task as t', `${table}.id`, 't.proj_id')
+        .select(`${table}.name as project`, 't.*')
+}
 // List by Department
 function findByDepartment(dep){
     return db(table)
@@ -62,6 +67,7 @@ function remove(id){
 
 module.exports = {
     listProjects,
+    listAllTasksAndProject,
     findByDepartment,
     findById,
     findByUserEmail,

@@ -1,11 +1,22 @@
 const express = require('express')
 const router = express.Router()
 const taskModel = require('./tasks-model')
-const projectModel = require('../projects/projects-model')
 
+// List all Tasks
 router.get('/', async(req, res) => {
     try{
         const tasks = await taskModel.listTasks()
+        return res.status(200).json(tasks)
+    }
+    catch(err){
+        return res.status(500).json({ message: err.message })
+    }
+})
+
+// List all Tasks and Projects
+router.get('/projects', async(req, res) => {
+    try{
+        const tasks = await taskModel.findAllTasksByProject()
         return res.status(200).json(tasks)
     }
     catch(err){

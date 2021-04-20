@@ -13,6 +13,17 @@ router.get('/', async(req, res) => {
     }
 })
 
+// Find all Projects and their tasks
+router.get('/tasks', async(req, res) => {
+    try{
+        const projects = await projectModel.listAllTasksAndProject()
+        return res.status(200).json({projects})
+    }
+    catch(err){
+        return res.status(500).json({ message: err.message })
+    }
+})
+
 // Find by project name or find all projects in department, all projects from a user by his unique email 
 router.get('/:search', async(req, res) => {
     const search = req.params.search
