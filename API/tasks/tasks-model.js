@@ -34,6 +34,7 @@ function findById(id){
 function create(task){
     return db(table)
         .insert(task)
+        .returning('*')
 }
 
 // Update
