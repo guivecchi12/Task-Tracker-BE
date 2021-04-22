@@ -4,7 +4,7 @@ const table = 'task'
 // Read all
 function listTasks(){
     return db(table)
-        .select('*')
+        .select('*');
 }
 
 // List by Project
@@ -12,14 +12,14 @@ function findByProject(projectName){
     return db(table)
         .join('project as p', `${table}.proj_id`, 'p.id')
         .where('p.name', projectName)
-        .select('p.name as project', `${table}.*`)
+        .select('p.name as project', `${table}.*`);
 }
 
 // List by Project ID
 function findAllTasksByProject(){
     return db(table)
         .innerJoin('project as p', `${table}.proj_id`, 'p.id')
-        .select('p.name as project', `${table}.*`)
+        .select('p.name as project', `${table}.*`);
 }
 
 // List by ID
@@ -27,14 +27,14 @@ function findById(id){
     return db(table)
         .where({id: id})
         .first()
-        .select('*')
+        .select('*');
 }
 
 // Create
 function create(task){
     return db(table)
         .insert(task)
-        .returning('*')
+        .returning('*');
 }
 
 // Update
@@ -43,6 +43,7 @@ function update(id, task){
         .where({id: id})
         .first()
         .update(task)
+        .returning('*');
 }
 
 // Delete
@@ -50,7 +51,7 @@ function remove(id){
     return db(table)
         .where({id: id})
         .first()
-        .del()
+        .del();
 }
 
 module.exports = {
