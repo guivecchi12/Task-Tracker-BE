@@ -51,8 +51,8 @@ router.post('/', async(req, res)=>{
             return res.status(400).json({ message: 'New tasks require both a name and a description'})
         }
 
-        const taskId = await taskModel.create(task)
-        const newTask = await taskModel.findById(taskId)
+        await taskModel.create(task)
+        const newTask = await taskModel.listTasks()
 
         return res.status(201).json(newTask)
     }

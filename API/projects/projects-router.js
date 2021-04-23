@@ -87,8 +87,8 @@ router.post('/', async(req, res) => {
             })
         }
 
-        const proj = await projectModel.create(newProject)
-        const response = await projectModel.findById(proj)
+        await projectModel.create(newProject)
+        const response = await projectModel.listProjects()
         return res.status(201).json(response)
 
     }
